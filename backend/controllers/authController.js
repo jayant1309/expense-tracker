@@ -38,7 +38,7 @@ try {
 } catch (err) {
   res
   .status(500)
-  .json({ message: "Error registering user", error: err.message });
+  .json({ message: "Error logging in user", error: err.message });
 }
 
 
@@ -48,7 +48,7 @@ try {
 exports.loginUser = async (req, res) => {
   const{email,password}=req.body;
   if(!email || !password){
-    return res.status(400).json({message:"All fieldsvare required"});
+    return res.status(400).json({message:"All fields are required"});
   }
   try{
     const user =await User.findOne({email});
@@ -64,7 +64,7 @@ exports.loginUser = async (req, res) => {
   } catch (err){
     res
     .status(500)
-    .json({ message: "Error registering user", error: err.message });
+    .json({ message: "Error logging in user", error: err.message });
   }
 };
 
@@ -81,6 +81,6 @@ exports.getUserInfo = async (req, res) => {
   } catch(err){
     res
     .status(500)
-    .json({message:"Error registering user ",error:err.message});
+    .json({message:"Error getting user info ",error:err.message});
   }
 };
